@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Copyright (c) 2021-2026 community-scripts ORG
 # Author: slamanna212
-# License: MIT | https://github.com/community-scripts/ProxmoxVED/raw/main/LICENSE
+# License: MIT | https://github.com/slamanna212/ProxmoxVED/raw/main/LICENSE
 # Source: https://github.com/slamanna212/matchexec
 
 source /dev/stdin <<<"$FUNCTIONS_FILE_PATH"
