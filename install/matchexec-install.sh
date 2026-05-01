@@ -14,10 +14,7 @@ network_check
 update_os
 
 msg_info "Installing Dependencies"
-$STD apt-get install -y \
-  curl \
-  git \
-  ffmpeg
+$STD apt-get install -y ffmpeg
 msg_ok "Installed Dependencies"
 
 msg_info "Installing Node.js 24"
@@ -25,13 +22,7 @@ curl -fsSL https://deb.nodesource.com/setup_24.x | bash - &>/dev/null
 $STD apt-get install -y nodejs
 msg_ok "Installed Node.js 24"
 
-msg_info "Fetching Latest Release"
-RELEASE=$(curl -s https://api.github.com/repos/slamanna212/matchexec/releases/latest | grep "tag_name" | awk -F'"' '{print $4}')
-msg_ok "Latest Release: ${RELEASE}"
-
-msg_info "Cloning MatchExec ${RELEASE}"
-$STD git clone --branch "$RELEASE" --depth 1 https://github.com/slamanna212/matchexec.git /opt/matchexec
-msg_ok "Cloned MatchExec"
+fetch_and_deploy_gh_release "matchexec" "slamanna212/matchexec" "tarball"
 
 msg_info "Installing Node Dependencies"
 cd /opt/matchexec
