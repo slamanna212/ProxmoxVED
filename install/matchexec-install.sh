@@ -33,17 +33,21 @@ cd /opt/matchexec
 $STD npm run build
 cp -r public .next/standalone/
 cp -r .next/static .next/standalone/.next/static
-$STD npm prune --omit=dev
 msg_ok "Built Application"
 
 msg_info "Setting Up Data Directory"
 mkdir -p /opt/matchexec/app_data/data
 msg_ok "Set Up Data Directory"
 
-msg_info "Running Database Migrations"
+msg_info "Running Database Migrations and Seeding"
 cd /opt/matchexec
-node dist/migrator.js
-msg_ok "Ran Database Migrations"
+DATABASE_PATH=/opt/matchexec/app_data/data/matchexec.db $STD npm run migrate
+msg_ok "Ran Database Migrations and Seeding"
+
+msg_info "Pruning Dev Dependencies"
+cd /opt/matchexec
+$STD npm prune --omit=dev
+msg_ok "Pruned Dev Dependencies"
 
 msg_info "Creating Services"
 cat <<EOF >/etc/systemd/system/matchexec-web.service
