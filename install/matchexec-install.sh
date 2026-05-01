@@ -37,6 +37,7 @@ msg_ok "Built Application"
 
 msg_info "Setting Up Data Directory"
 mkdir -p /opt/matchexec/app_data/data
+ln -sf /opt/matchexec/app_data /opt/matchexec/.next/standalone/app_data
 msg_ok "Set Up Data Directory"
 
 msg_info "Running Database Migrations and Seeding"
