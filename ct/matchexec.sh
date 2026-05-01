@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source <(curl -fsSL https://raw.githubusercontent.com/slamanna212/ProxmoxVED/main/misc/build.func)
+COMMUNITY_SCRIPTS_URL="${COMMUNITY_SCRIPTS_URL:-https://raw.githubusercontent.com/slamanna212/ProxmoxVED/feat/matchexec}"
+source <(curl -fsSL "${COMMUNITY_SCRIPTS_URL}/misc/build.func")
 # Copyright (c) 2021-2026 community-scripts ORG
 # Author: slamanna212
 # License: MIT | https://github.com/slamanna212/ProxmoxVED/raw/main/LICENSE

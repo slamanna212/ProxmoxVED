@@ -18,8 +18,7 @@ $STD apt-get install -y ffmpeg
 msg_ok "Installed Dependencies"
 
 msg_info "Installing Node.js 24"
-curl -fsSL https://deb.nodesource.com/setup_24.x | bash - &>/dev/null
-$STD apt-get install -y nodejs
+NODE_VERSION="24" setup_nodejs
 msg_ok "Installed Node.js 24"
 
 fetch_and_deploy_gh_release "matchexec" "slamanna212/matchexec" "tarball"
